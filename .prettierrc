@@ -1,0 +1,11 @@
+{
+  "charset": "utf-8",
+  "endOfLine": "lf",
+  "trailingComma": "es5",
+  "useTabs": false,
+  "tabWidth": 2,
+  "semi": true,
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "singleQuote": true
+}
