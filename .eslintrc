@@ -7,9 +7,12 @@
     }
   },
   "plugins": [
-    "react-hooks"
+    "react-hooks",
+    "prettier"
   ],
+  "extends": ["prettier"],
   "rules": {
-    "react-hooks/rules-of-hooks": "error"
+    "react-hooks/rules-of-hooks": "error",
+    "prettier/prettier": "error"
   }
 }

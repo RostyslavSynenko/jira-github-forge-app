@@ -4,9 +4,11 @@ import { invoke } from '@forge/bridge';
 
 const App = () => {
   const [data, setData] = useState(null);
+
   useEffect(() => {
     invoke('getText', { example: 'my-invoke-variable' }).then(setData);
   }, []);
+
   return (
     <>
       <Text>Hello world!</Text>
