@@ -6,13 +6,48 @@
       "jsx": true
     }
   },
+  "env": {
+    "node": true,
+    "browser": true,
+    "es2023": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    }
+  },
   "plugins": [
     "react-hooks",
-    "prettier"
+    "react",
+    "prettier",
+    "import"
   ],
-  "extends": ["prettier"],
+  "extends": [
+    "prettier",
+    "plugin:import/recommended",
+    "plugin:react/recommended"
+  ],
   "rules": {
     "react-hooks/rules-of-hooks": "error",
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "no-undef": "error",
+    "import/named": "error",
+    "import/no-unresolved": "error",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "react/jsx-no-undef": [
+      "error",
+      {
+        "allowGlobals": false
+      }
+    ]
   }
 }
