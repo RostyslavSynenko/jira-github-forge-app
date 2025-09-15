@@ -1,18 +1,50 @@
 import React, { useEffect, useState } from 'react';
-import ForgeReconciler, { Text } from '@forge/react';
-import { invoke } from '@forge/bridge';
+import ForgeReconciler, { Text, Inline, Spinner } from '@forge/react';
+import { Token } from './components/Token';
+import { GITHUB_API_TOKEN_STORAGE_KEY } from './constants';
+import { getStorageData } from './services';
 
 const App = () => {
-  const [data, setData] = useState(null);
+  const [isGithubTokenLoading, setIsGithubTokenLoading] = useState(false);
+  const [githubToken, setGithubToken] = useState(null);
+
+  const getGithubToken = async () => {
+    try {
+      const response = await getStorageData(GITHUB_API_TOKEN_STORAGE_KEY);
+      const token = response.data || null;
+
+      setGithubToken(token);
+    } catch (error) {
+      console.error({ error }, 'Failed to get token');
+    } finally {
+      setIsGithubTokenLoading(false);
+    }
+  };
+
+  const handleSetGithubToken = (token) => {
+    setGithubToken(token);
+  };
 
   useEffect(() => {
-    invoke('getText', { example: 'my-invoke-variable' }).then(setData);
+    setIsGithubTokenLoading(true);
+
+    getGithubToken();
   }, []);
 
   return (
     <>
       <Text>Hello world!</Text>
-      <Text>{data ? data : 'Loading...'}</Text>
+      {isGithubTokenLoading && (
+        <Text>
+          <Inline>
+            <Spinner size="small" />
+            Loading...
+          </Inline>
+        </Text>
+      )}
+      {isGithubTokenLoading ? null : (
+        <Token token={githubToken} handleSetToken={handleSetGithubToken} />
+      )}
     </>
   );
 };
