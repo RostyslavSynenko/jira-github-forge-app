@@ -1,4 +1,4 @@
-# Forge Hello World
+# Jira <> GitHub Forge App
 
 This project contains a Forge app written in Javascript that displays `Hello World!` in a Jira admin page. 
 
