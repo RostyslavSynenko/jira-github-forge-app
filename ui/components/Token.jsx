@@ -34,8 +34,8 @@ export const Token = ({ token, handleSetToken }) => {
 
         await setStorageData(GITHUB_API_TOKEN_STORAGE_KEY, githubTokenInput);
 
-        setGithubTokenInput('');
         handleSetToken(githubTokenInput);
+        setGithubTokenInput('');
       }
     } catch (error) {
       console.error({ error }, 'Failed to save token');

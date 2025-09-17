@@ -18,6 +18,15 @@ app:
     memoryMB: 256
     architecture: arm64
   id: ari:cloud:ecosystem::app/afd64148-5763-4c5b-871c-4882a26561bb
+remotes:
+  - key: github-api
+    baseUrl: 'https://api.github.com'
+    operations:
+      - fetch
 permissions:
   scopes:
     - storage:app
+  external:
+    fetch:
+      backend:
+        - remote: github-api

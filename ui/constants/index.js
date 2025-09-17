@@ -1,1 +1,2 @@
 export const GITHUB_API_TOKEN_STORAGE_KEY = 'GITHUB_API_TOKEN';
+export const JIRA_PROJECT_KEY = 'TJP';

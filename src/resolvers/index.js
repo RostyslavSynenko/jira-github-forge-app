@@ -1,5 +1,11 @@
 import Resolver from '@forge/resolver';
-import { getStorageData, setStorageData, deleteStorageData } from '../services';
+import {
+  getStorageData,
+  setStorageData,
+  deleteStorageData,
+  getGithubRepositories,
+  getGithubRepositoryPullRequests,
+} from '../services';
 
 const resolver = new Resolver();
 
@@ -24,6 +30,18 @@ resolver.define('deleteStorageData', async (req) => {
   const { key } = req.payload;
 
   return deleteStorageData(key);
+});
+
+resolver.define('getGithubRepositories', async (req) => {
+  const { token } = req.payload;
+
+  return getGithubRepositories(token);
+});
+
+resolver.define('getGithubRepositoryPullRequests', async (req) => {
+  const { token, owner, repository } = req.payload;
+
+  return getGithubRepositoryPullRequests(token, owner, repository);
 });
 
 export const handler = resolver.getDefinitions();

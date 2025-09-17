@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ForgeReconciler, { Text, Inline, Spinner } from '@forge/react';
 import { Token } from './components/Token';
+import { RepositoryList } from './components/RepositoryList';
 import { GITHUB_API_TOKEN_STORAGE_KEY } from './constants';
 import { getStorageData } from './services';
 
@@ -45,6 +46,7 @@ const App = () => {
       {isGithubTokenLoading ? null : (
         <Token token={githubToken} handleSetToken={handleSetGithubToken} />
       )}
+      {githubToken && <RepositoryList token={githubToken} />}
     </>
   );
 };

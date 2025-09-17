@@ -2,7 +2,7 @@ import kvs from '@forge/kvs';
 
 export const getStorageData = async (key) => {
   try {
-    const value = await kvs.getSecret(key);
+    const value = await kvs.get(key);
 
     return {
       success: true,
